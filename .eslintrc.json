@@ -7,6 +7,9 @@
         "import/resolver": {
             "node": {
                 "extensions": [".js", ".ts"]
+            },
+            "alias": {
+                "map": [["@", "./src"]]
             }
         }
     },
