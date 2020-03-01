@@ -68,10 +68,11 @@ button:enabled {
         background: rgba($color-error, 0.2);
     }
 }
+
 .contained {
-    box-shadow: 0 1px 3px grey;
+    box-shadow: 0 1px 2px grey;
     color: $color-white-bg;
-    transition: box-shadow 0.15s ease-out, transform 0.15s ease-out;
+    transition: box-shadow 0.25s ease-out, transform 0.25s ease-out;
 }
 .contained:disabled {
     box-shadow: none;
@@ -106,7 +107,7 @@ button:enabled {
             content: "";
             position: absolute;
             transition: height 0.25s ease-out, width 0.25s ease-out 0.25s,
-                border-color 0s 0.5s;
+                border-width 0s 0.5s;
         }
         &::before {
             top: 0;
@@ -117,7 +118,7 @@ button:enabled {
             right: 0;
         }
         &:hover {
-            transition: background 0.25s ease-in 0.25s;
+            transition: background-color 0.25s ease-in 0.25s;
             &::after,
             &::before {
                 width: 100%;
@@ -132,7 +133,7 @@ button:enabled {
             }
         }
         &:active {
-            transition: background 0.25s;
+            transition: background-color 0.25s;
         }
     }
 }
