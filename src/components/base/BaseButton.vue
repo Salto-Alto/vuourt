@@ -1,5 +1,5 @@
 <template>
-    <button v-on:click="$emit('click')" :class="variant">
+    <button v-on:click="$emit('click')" :class="classes">
         <slot />
     </button>
 </template>
@@ -8,6 +8,7 @@
 import Vue from "vue";
 
 type ButtonVariant = "contained" | "text";
+type ButtonColor = "primary" | "error";
 
 export default Vue.extend({
     props: {
@@ -15,35 +16,70 @@ export default Vue.extend({
             type: String as () => ButtonVariant,
             default: "contained",
         },
+        color: {
+            type: String as () => ButtonColor,
+            default: "primary",
+        },
+    },
+    computed: {
+        classes() {
+            return [this.variant, this.color];
+        },
     },
 });
 </script>
 
 <style lang="scss" scoped>
-@import "../../config/colorPalette.scss";
 button {
     padding: 0.6em 1em 0.6em 1em;
     border-width: 0;
     font-size: 0.8em;
     position: relative;
+    border-radius: $border-radius;
 }
 button:enabled {
     cursor: pointer;
 }
+.primary {
+    background-color: $color-primary;
+    color: $color-primary;
+    &::before,
+    &::after {
+        border-color: $color-primary;
+    }
+    &.text:hover {
+        background: rgba($color-primary, 0.08);
+    }
+    &.text:active {
+        background: rgba($color-primary, 0.2);
+    }
+}
+.error {
+    background-color: $color-error;
+    color: $color-error;
+    &::before,
+    &::after {
+        border-color: $color-error;
+    }
+    &:hover {
+        background: rgba($color-error, 0.08);
+    }
+    &:active {
+        background: rgba($color-error, 0.2);
+    }
+}
 .contained {
-    border-radius: 5px;
-    background-color: $primary;
     box-shadow: 0 1px 3px grey;
-    color: $white-bg;
+    color: $color-white-bg;
     transition: box-shadow 0.15s ease-out, transform 0.15s ease-out;
 }
 .contained:disabled {
     box-shadow: none;
-    background: $darker-bg;
+    background: $color-darker-bg;
 }
 .contained:hover:enabled:not(:active) {
     box-shadow: 0 2px 6px grey;
-    transform: translate(0px, -2px);
+    transform: translate(0px, -1px);
     filter: brightness(105%);
 }
 .contained:active:enabled {
@@ -52,19 +88,18 @@ button:enabled {
 }
 
 .text {
-    color: $primary;
-    font-size: 0.9em;
     font-weight: bold;
-    background: rgba($primary, 0);
-    transition: background 0.5s ease-in;
+    box-shadow: none;
+    background-color: rgba(255, 255, 255, 0);
+    transition: background-color 0.5s ease-in;
     &:disabled {
-        color: $separator;
+        color: $color-separator;
     }
     &:enabled {
-        color: $primary;
         &::before,
         &::after {
-            border: 1px solid transparent;
+            border: 0px solid;
+            border-radius: $border-radius;
             width: 0;
             height: 0;
             box-sizing: inherit;
@@ -82,7 +117,6 @@ button:enabled {
             right: 0;
         }
         &:hover {
-            background: rgba($primary, 0.08);
             transition: background 0.25s ease-in 0.25s;
             &::after,
             &::before {
@@ -91,16 +125,13 @@ button:enabled {
                 transition: width 0.25s ease-out, height 0.25s ease-out 0.25s;
             }
             &::before {
-                border-top-color: $primary;
-                border-right-color: $primary;
+                border-width: 1px 1px 0 0;
             }
             &::after {
-                border-bottom-color: $primary;
-                border-left-color: $primary;
+                border-width: 0 0 1px 1px;
             }
         }
         &:active {
-            background: rgba($primary, 0.2);
             transition: background 0.25s;
         }
     }
