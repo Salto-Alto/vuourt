@@ -33,7 +33,7 @@ export default Vue.extend({
 button {
     padding: 0.6em 1em 0.6em 1em;
     border-width: 0;
-    font-size: 0.8em;
+    font-size: 0.9em;
     position: relative;
     border-radius: $border-radius;
 }
