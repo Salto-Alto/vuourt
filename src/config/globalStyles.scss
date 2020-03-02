@@ -1,12 +1,24 @@
 html {
     font-size: 16px;
     font-weight: 300;
-    font-family: "Source Sans Pro", "Helvetica Neue", Arial, sans-serif;
-    letter-spacing: 0.03em;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    box-sizing: border-box;
+}
+* {
+    box-sizing: inherit;
+}
+body {
+    margin: 0;
+    padding: 0;
 }
 h4 {
     font-size: 1.3em;
     font-weight: 400;
     margin-top: 0.3em;
     margin-bottom: 1em;
+}
+h5 {
+    font-size: 1.3em;
+    font-weight: 200;
+    margin: 0;
 }
