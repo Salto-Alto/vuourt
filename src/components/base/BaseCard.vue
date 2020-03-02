@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="card">
         <h4 v-if="title">{{ title }}</h4>
         <slot />
     </div>
@@ -16,7 +16,7 @@ export default Vue.extend({
 });
 </script>
 <style lang="scss" scoped>
-div {
+.card {
     background-color: $color-white-bg;
     border: none;
     border-radius: 5px;

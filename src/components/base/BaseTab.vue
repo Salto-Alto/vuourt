@@ -1,6 +1,6 @@
 <template>
     <div class="tab">
-        <h5 :class="['tab-text', isActive ? 'active-tab' : '']">{{ text }}</h5>
+        <h5 :class="['tab-text', { 'active-tab': isActive }]">{{ text }}</h5>
     </div>
 </template>
 <script lang="ts">
@@ -44,7 +44,8 @@ $border-width: 2px;
     justify-content: center;
     padding: 0 1em 0 1em;
     flex-grow: 1;
-    padding-top: $border-width + 10px;
+    padding-top: $border-width + 8px;
+    user-select: none;
 }
 .active-tab {
     color: $color-primary;
