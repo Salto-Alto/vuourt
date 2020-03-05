@@ -1,5 +1,5 @@
 <template>
-    <div class="input-container">
+    <div class="base-input-container">
         <textarea
             v-if="multiline"
             :rows="rows"
@@ -15,7 +15,7 @@
             v-bind:value="value"
             v-on:input="$emit('input', $event.target.value)"
         />
-        <label class="label">{{ label }}</label>
+        <label class="base-input-label label">{{ label }}</label>
     </div>
 </template>
 <script lang="ts">
@@ -43,18 +43,17 @@ export default Vue.extend({
     },
     computed: {
         classes(): ClassPropType {
-            return ["input", { "offset-label": this.value.length > 0 }];
+            return [
+                "base-input",
+                "text-input",
+                { "offset-label": this.value.length > 0 },
+            ];
         },
     },
     inheritAttrs: false,
 });
 </script>
 <style lang="scss" scoped>
-.input-container {
-    position: relative;
-    margin-top: 1em;
-}
-
 $final-top-offset: -1.3em;
 $animation-duration: 0.2s;
 $animation-delay: 0.1s;
@@ -63,20 +62,19 @@ $animation-delay: 0.1s;
     position: absolute;
     left: 0.3em;
     top: 0.2em;
-    font-size: 0.8em;
     transition: top $animation-duration ease $animation-delay,
         color $animation-duration;
-    color: $color-light-text;
     pointer-events: none;
 }
 
-.input {
-    padding: 0.5em;
+.text-input {
     width: 200px;
     resize: none;
-    border: 1px solid transparent;
-    border-radius: $border-radius;
-    border-bottom-color: $color-separator;
+    &:not(:focus) {
+        border-left-color: transparent;
+        border-right-color: transparent;
+        border-top-color: transparent;
+    }
     transition: border-color $animation-duration ease-out;
     &:hover,
     &:focus {
@@ -85,21 +83,21 @@ $animation-delay: 0.1s;
             transition: top $animation-duration ease;
         }
     }
-    &:hover {
+    &:hover:not(:focus) {
         border-color: $color-separator;
         transition: border-color $animation-duration ease-out $animation-delay;
     }
     &:focus {
-        border-color: $color-primary;
         transition: border-color;
-        & ~ label {
-            color: $color-primary;
-        }
     }
 }
 
 .multiline-input {
-    border-color: $color-separator;
+    font-family: inherit;
+    font-size: 0.8em;
+    &:not(:focus) {
+        border-color: $color-separator;
+    }
 }
 
 .offset-label {

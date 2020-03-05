@@ -22,3 +22,26 @@ h5 {
     font-weight: 200;
     margin: 0;
 }
+
+.base-input-container {
+    position: relative;
+    margin-top: 1em;
+}
+
+.base-input {
+    padding: 0.5em;
+    font-size: 0.9em;
+    border-radius: $border-radius;
+    border: 1px solid $color-separator;
+    &:focus {
+        border-color: $color-primary;
+        & ~ label {
+            color: $color-primary;
+        }
+    }
+}
+
+.base-input-label {
+    font-size: 0.8em;
+    color: $color-light-text;
+}
