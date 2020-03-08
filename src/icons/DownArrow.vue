@@ -23,3 +23,17 @@
         </g>
     </svg>
 </template>
+<script lang="ts">
+import Vue from "vue";
+
+export default Vue.extend({
+    props: {
+        width: {
+            type: [Number, String],
+        },
+        height: {
+            type: [Number, String],
+        },
+    },
+});
+</script>
