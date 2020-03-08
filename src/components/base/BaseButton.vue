@@ -14,7 +14,7 @@ export default Vue.extend({
     props: {
         variant: {
             type: String as () => ButtonVariant,
-            default: "contained",
+            default: "text",
         },
         color: {
             type: String as () => ButtonColor,
@@ -61,10 +61,10 @@ button:enabled {
     &::after {
         border-color: $color-error;
     }
-    &:hover {
+    &.text:hover {
         background: rgba($color-error, 0.08);
     }
-    &:active {
+    &.text:active {
         background: rgba($color-error, 0.2);
     }
 }
