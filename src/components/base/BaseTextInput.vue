@@ -4,6 +4,7 @@
             v-if="multiline"
             :rows="rows"
             :class="[...classes, 'multiline-input']"
+            :maxlength="maxLength || ''"
             v-bind:value="value"
             v-on:input="$emit('input', $event.target.value)"
         />
@@ -12,6 +13,7 @@
             v-bind="$attrs"
             type="text"
             :class="classes"
+            :maxlength="maxLength || ''"
             v-bind:value="value"
             v-on:input="$emit('input', $event.target.value)"
         />
@@ -39,6 +41,9 @@ export default Vue.extend({
         rows: {
             type: Number,
             default: 10,
+        },
+        maxLength: {
+            type: Number,
         },
     },
     computed: {
@@ -105,6 +110,5 @@ $animation-delay: 0.1s;
         top: $final-top-offset;
         transition: top $animation-duration ease, color $animation-duration;
     }
-    border-color: $color-separator;
 }
 </style>
