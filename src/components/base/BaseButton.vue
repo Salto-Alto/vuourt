@@ -89,7 +89,6 @@ button:enabled {
 }
 
 .text {
-    font-weight: bold;
     box-shadow: none;
     background-color: rgba(255, 255, 255, 0);
     transition: background-color 0.5s ease-in;

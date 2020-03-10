@@ -70,10 +70,10 @@ $animation-delay: 0.1s;
     transition: top $animation-duration ease $animation-delay,
         color $animation-duration;
     pointer-events: none;
+    white-space: nowrap;
 }
 
 .text-input {
-    width: 200px;
     resize: none;
     &:not(:focus) {
         border-left-color: transparent;
@@ -102,6 +102,9 @@ $animation-delay: 0.1s;
     font-size: 0.8em;
     &:not(:focus) {
         border-color: $color-separator;
+    }
+    &:hover {
+        animation: temporary-transparent2 $animation-duration;
     }
 }
 

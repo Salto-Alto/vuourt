@@ -1,29 +1,38 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
-  </div>
+    <div class="container">
+        <NavBar />
+        <Court />
+    </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+import NavBar from "@/components/navigation/NavBar.vue";
+import Court from "@/views/Court.vue";
+
+type TodoItemProps = {
+    message: string;
+    id: number;
+};
 
 export default Vue.extend({
-  name: "App",
-  components: {
-    HelloWorld
-  }
+    name: "App",
+    components: {
+        NavBar,
+        Court,
+    },
 });
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss">
+@import "@/styles/globalStyles.scss";
+
+.title {
+    align-self: center;
+}
+.new-item-form {
+    display: flex;
+    align-items: flex-end;
+    align-self: flex-end;
 }
 </style>

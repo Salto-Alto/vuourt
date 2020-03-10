@@ -23,18 +23,24 @@ h5 {
     margin: 0;
 }
 
+.view {
+    width: 100%;
+    padding: 20px;
+}
+
 .centered-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .base-input-container {
     position: relative;
-    margin-top: 1em;
+    margin-top: 2em;
+    margin-bottom: 1em;
 }
 
 .base-input {
+    width: 100%;
     padding: 0.5em;
     font-size: 0.9em;
     border-radius: $border-radius;

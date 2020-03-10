@@ -18,6 +18,7 @@ nav {
     height: 4.5em;
     position: sticky;
     top: 0;
+    z-index: 1000;
     width: 100vw;
     background-color: $color-white-bg;
     box-shadow: 0 3px 5px $color-separator;

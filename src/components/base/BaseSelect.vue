@@ -7,7 +7,7 @@
         >
             <slot />
         </select>
-        <label class="base-input-label label">Choisissez</label>
+        <label class="base-input-label label">{{ label }}</label>
         <down-arrow width="0.9em" class="dropdown-icon" />
     </div>
 </template>
@@ -19,6 +19,11 @@ export default Vue.extend({
     props: {
         value: {
             type: String,
+            required: true,
+        },
+        label: {
+            type: String,
+            required: true,
         },
     },
     components: {
@@ -28,7 +33,6 @@ export default Vue.extend({
 </script>
 <style lang="scss" scoped>
 .select {
-    width: 150px;
     appearance: none;
     color: transparent;
     text-shadow: 0 0 0 $color-dark-text;
@@ -46,7 +50,7 @@ export default Vue.extend({
 .label {
     position: absolute;
     left: 0;
-    top: -1.3em;
+    top: -1.4em;
 }
 
 .dropdown-icon {
